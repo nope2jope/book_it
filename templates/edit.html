@@ -1,19 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit</title>
-</head>
-<body>
-<h1>Edit it!</h1>
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Change it around!{% endblock %}
+
+{% block content %}
+
+<h1>Get wiggly!</h1>
 <br>
 <p>{{book.title}}</p>
 <p>{{book.rating}}</p>
+<div>
+<!--book.id is passed back to main.py, whereas new-rating is accessed from via request.form -->
 <form action="{{ url_for('edit', id=book.id) }}" method="POST">
     <input name="new-rating" type="text">
     <button type="submit">Change Rating</button>
 </form>
 
 <a href="{{ url_for('add') }}">Add New Book</a>
-</body>
-</html>
+</div>
+{% endblock %}
